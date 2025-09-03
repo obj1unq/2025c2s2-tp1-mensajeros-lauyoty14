@@ -1,0 +1,42 @@
+import example.*
+
+test "jeanPuedeEnvitarABrucklyn" {
+  assert.equals(true, jeanGray.puedeEntregar(paquete, puenteDeBrocklyn))
+}
+
+test "neoPuedeEnvitarABrucklyn" {
+  assert.equals(true, neo.puedeEntregar(paquete, puenteDeBrocklyn))
+}
+
+test "saraConnorsPuedeEnvitarABrucklyn" {
+  assert.equals(true, saraConnors.puedeEntregar(paquete, puenteDeBrocklyn))
+}
+
+test "neoSinCreditoPuedeEntrarALaMatrix" {
+  neo.credito(0)
+  assert.equals(false, neo.puedeEntregar(paquete, matrix))
+}
+
+test "neoPuedeEntregarUnPaqueteSinPagar" {
+  paquete.estaPago(false)
+  assert.equals(false, neo.puedeEntregar(paquete, matrix))
+}
+
+test "jeanPuedeLlevarUnPaquetePagoALaMatrix" {
+  assert.equals(true, jeanGray.puedeEntregar(paquete, matrix))
+}
+
+test "saraPuedeLlevarUnPaqueteABrocklyUsandoUnCamionConAcomplamiento" {
+  saraConnors.vehiculo(camion)
+  camion.cantDeAcoplados(1)
+  saraConnors.peso(70)
+  assert.equals(false, saraConnors.puedeEntregar(paquete, puenteDeBrocklyn))
+}
+
+test "saraPuedeLlevarUnPaqueteABrocklyUsandoUnaMoto" {
+  saraConnors.vehiculo(moto)
+  saraConnors.peso(70)
+  assert.equals(true, saraConnors.puedeEntregar(paquete, puenteDeBrocklyn))
+}
+
+
